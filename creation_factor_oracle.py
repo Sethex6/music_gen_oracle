@@ -35,7 +35,7 @@ class oracle :
     n : int                                        #number of states
     init : int                                     #initial state
     delta_trans : list[dict]                       #forward transitions
-    supply : dict[some_class, int]                     #storage of the values of the supply function
+    supply : dict[some_class, int]                 #storage of the values of the supply function
     
  
 
@@ -93,7 +93,7 @@ sig: oracle -> class'object -> int -> oracle
 
 def add_letter (a:oracle, le, id):
    
-    l = serialized2type(le, id)             # O(1)
+    l = serialized2type(le, id)             
             
     a.n += 1
     a.delta_trans.append({})
@@ -103,7 +103,7 @@ def add_letter (a:oracle, le, id):
     k = calc_supply(a, a.n-1, id)
 
     while (k>-1 and letter_in_transition(a, l, k, id)==-1):    #while there is no transition from k labeled l
-        a.delta_trans[k][l] = a.n                          #creation of a new transition from k to last added state labeled l 
+        a.delta_trans[k][l] = a.n                              #creation of a new transition from k to last added state labeled l 
         k = calc_supply(a, k, id)                #k or k+1 
     
     s = int(0)
