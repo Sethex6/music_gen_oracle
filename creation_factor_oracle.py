@@ -93,13 +93,11 @@ sig: oracle -> class'object -> int -> oracle
 
 def add_letter (a:oracle, le, id):
    
-    #conversion to self defined types
     l = serialized2type(le, id)             # O(1)
             
-    #creation of a new state
     a.n += 1
     a.delta_trans.append({})
-    #new transition from the previous last state to the new last state labeled by l
+   
     a.delta_trans[a.n-1][l] = a.n
 
     k = calc_supply(a, a.n-1, id)
